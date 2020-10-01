@@ -1,6 +1,6 @@
-package TrabalhoED1.comandos;
+package comandos;
 
-import TrabalhoED1.funcoes.Funcao;
+import funcoes.Funcao;
 
 public interface Comando {
     public abstract String getOpcao();
