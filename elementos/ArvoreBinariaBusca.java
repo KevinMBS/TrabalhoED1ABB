@@ -27,7 +27,7 @@ public class ArvoreBinariaBusca {
             return atual;
         }
         
-        if(atual.getChave().compareTo(chave) < 0)
+        if(chave.compareTo(atual.getChave()) < 0)
             return procuraArquivoRec(atual.getEsquerdo(), chave);
         
         return procuraArquivoRec(atual.getDireito(), chave);
@@ -45,11 +45,11 @@ public class ArvoreBinariaBusca {
             return atual;
         }
         
-        if(atual.getChave().compareTo(chave) < 0)
+        if(chave.compareTo(atual.getChave()) < 0){
             atual.setEsquerdo(addArquivoRec(raiz.getEsquerdo(), chave));
-        
-        atual.setDireito(addArquivoRec(raiz.getDireito(), chave));
-        
+        }else if(chave.compareTo(atual.getChave()) > 0){
+            atual.setDireito(addArquivoRec(raiz.getDireito(), chave));
+        }
         return atual;
     }
     
