@@ -1,6 +1,6 @@
-package comandos;
+package TrabalhoED1_ArvoreBinaria.comandos;
 
-import funcoes.Funcao;
+import TrabalhoED1_ArvoreBinaria.funcoes.Funcao;
 
 public interface Comando {
     public abstract String getOpcao();

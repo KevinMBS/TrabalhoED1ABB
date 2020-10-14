@@ -1,4 +1,4 @@
-package elementos;
+package TrabalhoED1_ArvoreBinaria.elementos;
 
 public class Arquivo {
     private String chave;

@@ -1,9 +1,9 @@
-package path;
+package TrabalhoED1_ArvoreBinaria.funcoes;
 
-import exceptions.NaoEDiretorioException;
-import arvoreBinariaBusca.ABB;
-import elementos.Arquivo;
-import elementos.Diretorio;
+import TrabalhoED1_ArvoreBinaria.elementos.ArvoreBinariaBusca;
+import TrabalhoED1_ArvoreBinaria.elementos.Arquivo;
+import TrabalhoED1_ArvoreBinaria.elementos.Diretorio;
+
 
 public abstract class InterpretaPath {
     //isso é iterativo
@@ -46,7 +46,7 @@ public abstract class InterpretaPath {
     
     //isso é recursivo(melhor)
     //recebe a arvore onde deseja-se procurar o path,e o path dividido,ou seja, path.split
-    public static Arquivo intertpreta(String pathDividido[], ABB arvore){
+    public static Arquivo intertpreta(String pathDividido[], ArvoreBinariaBusca arvore){
         Arquivo atual = arvore.getRaiz();
         String aux[] = null;
         //caso este não seja o ultimo caminho a ter que ser visitado o vetor aux será passado como parâmetro,este tem uma posição a menos que o pathDividido

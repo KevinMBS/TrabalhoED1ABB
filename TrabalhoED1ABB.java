@@ -1,16 +1,16 @@
-package ed1abb;
+package TrabalhoED1_ArvoreBinaria;
 
-import comandos.ComandoLinux;
-import arvoreBinariaBusca.ABB;
+import TrabalhoED1_ArvoreBinaria.elementos.ArvoreBinariaBusca;
+import TrabalhoED1_ArvoreBinaria.comandos.ComandoLinux;
 import java.util.Scanner;
 
-public class ED1ABB {
+public class TrabalhoED1ABB {
 
     
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         String op;
-        ABB arvore = new ABB();
+        ArvoreBinariaBusca arvore = new ArvoreBinariaBusca();
         
         System.out.println("Bem vindo ao terminal, digite um comando para iniciar:");
         op = input.nextLine();

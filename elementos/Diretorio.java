@@ -1,16 +1,13 @@
-package elementos;
-
-import arvoreBinariaBusca.ABB;
-
+package TrabalhoED1_ArvoreBinaria.elementos;
 
 public class Diretorio extends Arquivo{
-    private ABB dir;
+    private ArvoreBinariaBusca dir;
 
-    public ABB getDir() {
+    public ArvoreBinariaBusca getDir() {
         return dir;
     }
 
-    public void setDir(ABB dir) {
+    public void setDir(ArvoreBinariaBusca dir) {
         this.dir = dir;
     }
     public Diretorio(String chave) {

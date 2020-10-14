@@ -1,4 +1,4 @@
-package exceptions;
+package TrabalhoED1_ArvoreBinaria.exceptions;
 
 public class ComandoInvalidoException extends Exception{
 

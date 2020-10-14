@@ -1,12 +1,12 @@
-package arvoreBinariaBusca;
+package TrabalhoED1_ArvoreBinaria.elementos;
 
-import elementos.Arquivo;
-import elementos.Diretorio;
+import TrabalhoED1_ArvoreBinaria.elementos.Arquivo;
+import TrabalhoED1_ArvoreBinaria.elementos.Diretorio;
 import java.util.ArrayList;
 
-public class ABB {
+public class ArvoreBinariaBusca {
     private Arquivo raiz;
-    public ABB(){
+    public ArvoreBinariaBusca(){
         this.raiz = null;
     }
 

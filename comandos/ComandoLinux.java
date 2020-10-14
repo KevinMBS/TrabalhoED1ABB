@@ -1,7 +1,7 @@
-package comandos;
+package TrabalhoED1_ArvoreBinaria.comandos;
 
-import exceptions.ComandoInvalidoException;
-import funcoes.Funcao;
+import TrabalhoED1_ArvoreBinaria.exceptions.ComandoInvalidoException;
+import TrabalhoED1_ArvoreBinaria.funcoes.Funcao;
 
 public enum ComandoLinux implements Comando{
     MKDIR("mkdir", new ComandoMkdir()),
