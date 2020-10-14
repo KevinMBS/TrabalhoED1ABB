@@ -1,7 +1,5 @@
 package TrabalhoED1_ArvoreBinaria.elementos;
 
-import TrabalhoED1_ArvoreBinaria.elementos.Arquivo;
-import TrabalhoED1_ArvoreBinaria.elementos.Diretorio;
 import java.util.ArrayList;
 
 public class ArvoreBinariaBusca {
@@ -18,8 +16,41 @@ public class ArvoreBinariaBusca {
         this.raiz = raiz;
     }
     
-    public void printArvore(){
+    public Arquivo procuraArquivo(String chave){ //Serve mais para chamar o metodo recursivo
+        return procuraArquivoRec(this.raiz, chave);
+    }
+    
+    private Arquivo procuraArquivoRec(Arquivo raiz, String chave){
+        Arquivo atual = raiz;
         
+        if(atual == null || atual.getChave().equals(chave)){
+            return atual;
+        }
+        
+        if(atual.getChave().compareTo(chave) < 0)
+            return procuraArquivoRec(atual.getEsquerdo(), chave);
+        
+        return procuraArquivoRec(atual.getDireito(), chave);
+    }
+    
+    public void addArquivo(String chave){
+        this.raiz = addArquivoRec(this.raiz, chave);
+    }
+    
+    private Arquivo addArquivoRec(Arquivo raiz, String chave){
+        Arquivo atual = raiz;
+        
+        if(atual == null){
+            atual = new Arquivo(chave);
+            return atual;
+        }
+        
+        if(atual.getChave().compareTo(chave) < 0)
+            atual.setEsquerdo(addArquivoRec(raiz.getEsquerdo(), chave));
+        
+        atual.setDireito(addArquivoRec(raiz.getDireito(), chave));
+        
+        return atual;
     }
     
     public void printArvoreRecursivo(String caminho, Arquivo dir){
