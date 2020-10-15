@@ -6,6 +6,29 @@ import TrabalhoED1_ArvoreBinaria.elementos.Diretorio;
 
 
 public abstract class InterpretaPath {
+    /*
+    public static Arquivo interpreta(ArvoreBinariaBusca arvore, String path){        
+        Arquivo atual = arvore.getRaiz();
+        int index = path.indexOf("/");
+        String dirAtual = path.substring(0, index);
+        
+        System.out.println(dirAtual);
+        
+        if(atual == null || (atual.getChave().equals(dirAtual) && !path.contains("/")))
+            return atual;
+        
+        
+        
+        if(atual.getChave().compareTo(dirAtual) == 0){
+            if(atual instanceof Diretorio)
+                interpreta(((Diretorio) atual).getDir()., path.substring(index+1));
+        }else if (atual.getChave().compareTo(dirAtual) < 0){
+            interpreta(atual.get)
+        }else{
+            
+        }
+        
+    }
     //isso é iterativo
     /*
     public static Arquivo interpreta(ABB lista, String path) throws PathInvalidoException, NaoEDiretorioException{
@@ -32,7 +55,7 @@ public abstract class InterpretaPath {
         }
         return null;
     }
-    */
+  
     
     //isso é recursivo(melhor)
     //recebe a arvore onde deseja-se procurar o path,e o path dividido,ou seja, path.split
@@ -74,4 +97,5 @@ public abstract class InterpretaPath {
         }
         return null;
     }
+    */
 }

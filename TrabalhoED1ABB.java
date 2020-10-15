@@ -24,7 +24,7 @@ public class TrabalhoED1ABB {
                 comando.getFuncao().fazFuncao(arvore, comandoStrArray);
                 //A opção feita pelo usuario é recebida através de uma classe de Enum
             } catch (Exception ex) {
-                System.err.print(ex.getMessage() + "\n");
+                System.err.println(ex.getMessage());
             }
             
             op = input.nextLine();
