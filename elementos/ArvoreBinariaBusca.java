@@ -46,9 +46,9 @@ public class ArvoreBinariaBusca {
         }
         
         if(chave.compareTo(atual.getChave()) < 0){
-            atual.setEsquerdo(addArquivoRec(raiz.getEsquerdo(), chave));
+            atual.setEsquerdo(addDiretorioRec(raiz.getEsquerdo(), chave));
         }else if(chave.compareTo(atual.getChave()) > 0){
-            atual.setDireito(addArquivoRec(raiz.getDireito(), chave));
+            atual.setDireito(addDiretorioRec(raiz.getDireito(), chave));
         }
         return (Diretorio) atual;
     }    
@@ -74,21 +74,23 @@ public class ArvoreBinariaBusca {
     }
     
     public Arquivo interpretaPath(String path){
-        return interpretaPathRec(raiz, path);
+        return interpretaPathRec(this, path);
     }
     
-    private Arquivo interpretaPathRec(Arquivo atual, String path){
+    private Arquivo interpretaPathRec(ArvoreBinariaBusca atual, String path){
         int index = 0;
         String dirAtual = path;
+        Arquivo dir;
         if(path.contains("/")){
             index = path.indexOf("/");
             dirAtual = dirAtual.substring(0, index);
+            dir = atual.procuraArquivo(dirAtual);
+            if(dir instanceof Diretorio)
+                return interpretaPathRec(((Diretorio) dir).getDir(), path.substring(index+1, path.length()));
+            return dir;
+        }else{
+            return atual.procuraArquivo(dirAtual);
         }
-        
-        
-        
-        
-        return null;
     }
     
     public void printArvoreRecursivo(String caminho, Arquivo dir){
