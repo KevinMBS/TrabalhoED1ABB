@@ -51,7 +51,7 @@ public class ArvoreBinariaBusca {
             atual.setDireito(addDiretorioRec(raiz.getDireito(), chave));
         }
         return (Diretorio) atual;
-    }    
+    }
     
     public void addArquivo(String chave){
         this.raiz = addArquivoRec(this.raiz, chave);
