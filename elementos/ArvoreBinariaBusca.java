@@ -93,29 +93,36 @@ public class ArvoreBinariaBusca {
         }
     }
     
-    public void printArvoreRecursivo(String caminho, Arquivo dir){
+    public static void printArvoreRecursivo(String caminho, Arquivo dir){
         Arquivo raiz = ((Diretorio)dir).getDir().getRaiz();
         ArrayList<Diretorio> dirsAvisitar = new ArrayList<>();
         caminho = caminho.concat("/" + dir.getChave());
         System.out.println("" + caminho);
         
         //Imprimindo e guardando em um array os nós desta arvore que são diretorios,portanto estes devem ser visitados
-        dirsAvisitar = auxPrintListaRec(raiz);
+        dirsAvisitar = auxPrintArvoreRec(raiz);
         
         //visantando diretorios(arvores) contidas nos nós 
-        for(Diretorio d:dirsAvisitar){
-            printArvoreRecursivo(caminho, d);
+        
+        if(dirsAvisitar.isEmpty()){
+            System.out.println("");
+        } else {
+            for(Diretorio d:dirsAvisitar){
+               
+                printArvoreRecursivo(caminho, d);
+
+            }
         }
+        
     }
     
-    public static ArrayList<Diretorio> auxPrintListaRec(Arquivo atual){
+    private static ArrayList<Diretorio> auxPrintArvoreRec(Arquivo atual){
         ArrayList<Diretorio> dirsAvisitar = new ArrayList<>();
         if(atual != null){
-            
-            ArrayList<Diretorio> esquerdo = auxPrintListaRec(atual.getEsquerdo());
-            System.out.println(" " + atual.getChave());
-            ArrayList<Diretorio> direito = auxPrintListaRec(atual.getDireito());
-            if(esquerdo != null){
+            ArrayList<Diretorio> esquerdo = auxPrintArvoreRec(atual.getEsquerdo());
+            System.out.println(" "+atual.getChave());
+            ArrayList<Diretorio> direito = auxPrintArvoreRec(atual.getDireito());
+            if(esquerdo.isEmpty() == false){
                 for(Diretorio d:esquerdo){
                     dirsAvisitar.add(d);
                 }
@@ -123,13 +130,35 @@ public class ArvoreBinariaBusca {
             if(atual instanceof Diretorio){
                 dirsAvisitar.add((Diretorio)atual);
             }
-            if(direito != null){
+            if(direito.isEmpty() == false){
                 for(Diretorio d:direito){
                     dirsAvisitar.add(d);
                 }
             }
-            return dirsAvisitar;
+            
+            
         }
-        return null;
+        return dirsAvisitar;
+        
+        
     }
+
+    public void printArvore(String nomeDir) {
+        System.out.println("./"+ nomeDir);
+        Arquivo raiz = this.getRaiz();
+        auxPrintArvore(raiz);
+        
+    }
+
+    private static void auxPrintArvore(Arquivo raiz) {
+        if(raiz.getEsquerdo() != null){
+            auxPrintArvore(raiz.getEsquerdo());
+        }
+        System.out.println(raiz.getChave());
+        if(raiz.getDireito() != null){
+            auxPrintArvore(raiz.getDireito());
+        }
+    }
+    
+    
 }
