@@ -37,7 +37,7 @@ public class ArvoreBinariaBusca {
         this.raiz = addDiretorioRec(this.raiz, chave);
     }
     
-    private Diretorio addDiretorioRec(Arquivo raiz, String chave){
+    private Arquivo addDiretorioRec(Arquivo raiz, String chave){
         Arquivo atual = raiz;
         
         if(atual == null){
@@ -50,7 +50,7 @@ public class ArvoreBinariaBusca {
         }else if(chave.compareTo(atual.getChave()) > 0){
             atual.setDireito(addDiretorioRec(raiz.getDireito(), chave));
         }
-        return (Diretorio) atual;
+        return atual;
     }
     
     public void addArquivo(String chave){
