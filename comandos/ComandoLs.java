@@ -31,17 +31,7 @@ public class ComandoLs implements Funcao{
                 dir = arvore;       
                 printArvoreRecursivo(".", dir,"");
             }
-<<<<<<< HEAD
-             
-=======
-            if(dir == null){ //Diretorio não existe
-                throw new DiretorioInexistenteLSException(resComando[0], resComando[1]);
-            }else if(!(dir instanceof Diretorio)){ //Ou seja, se ele for um arquivo base não é possivel imprir seu conteudo no nosso sistema
-                System.out.println(""+dir.getChave());
-            }else{
-                printArvoreRecursivo(".",dir);
-            } 
->>>>>>> dc7cdea2375f8d3d68de8df90bba0bf74c9dbf26
+
         }else{
             //não recursiva
             aux = arvore.interpretaPath(resComando[1]);
