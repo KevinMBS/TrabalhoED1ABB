@@ -93,10 +93,15 @@ public class ArvoreBinariaBusca {
         }
     }
     
-    public static void printArvoreRecursivo(String caminho, Arquivo dir){
-        Arquivo raiz = ((Diretorio)dir).getDir().getRaiz();
+    public static void printArvoreRecursivo(String caminho, ArvoreBinariaBusca arvore, String pasta){
+        Arquivo raiz = arvore.getRaiz();
         ArrayList<Diretorio> dirsAvisitar = new ArrayList<>();
-        caminho = caminho.concat("/" + dir.getChave());
+        if(pasta.equals("")){
+            
+        }else{
+            caminho = caminho.concat("/" + pasta);
+        }
+        
         System.out.println("" + caminho);
         
         //Imprimindo e guardando em um array os nós desta arvore que são diretorios,portanto estes devem ser visitados
@@ -109,7 +114,7 @@ public class ArvoreBinariaBusca {
         } else {
             for(Diretorio d:dirsAvisitar){
                
-                printArvoreRecursivo(caminho, d);
+                printArvoreRecursivo(caminho, d.getDir(),d.getChave());
 
             }
         }
