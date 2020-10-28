@@ -5,7 +5,6 @@ import TrabalhoED1_ArvoreBinaria.comandos.ComandoLinux;
 import java.util.Scanner;
 
 public class TrabalhoED1ABB {
-
     
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
