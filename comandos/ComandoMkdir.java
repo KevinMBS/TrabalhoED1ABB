@@ -15,11 +15,11 @@ public class ComandoMkdir implements Funcao{
     public void fazFuncao(ArvoreBinariaBusca arvore, String... resComando) throws Exception {
         int index;
         
-        if(resComando.length == 1){
+        if(resComando.length == 1){ //Não foi adicionado qual chave deseja adicionar
             throw new FaltaOperandoException(resComando[0]);
         }else if(resComando.length == 2){
-            if(resComando[1].contains("/")){
-                index = resComando[1].lastIndexOf('/');
+            if(resComando[1].contains("/")){ //Com path
+                index = resComando[1].lastIndexOf('/'); //Separa a chave a ser adicionada do path
                 Arquivo dir = arvore.interpretaPath(resComando[1].substring(0, index));
                 if(dir == null){
                     throw new DiretorioInexistenteException(resComando[0], resComando[1]);
@@ -30,7 +30,7 @@ public class ComandoMkdir implements Funcao{
                         throw new DiretorioExistenteException(resComando[1]);
                     ((Diretorio) dir).getDir().addDiretorio(resComando[1].substring(index+1));
                 }
-            }else{
+            }else{ //sem path
                 if(arvore.procuraArquivo(resComando[1]) != null)
                     throw new DiretorioExistenteException(resComando[1]);
                 arvore.addDiretorio(resComando[1]);

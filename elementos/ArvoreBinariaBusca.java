@@ -23,7 +23,7 @@ public class ArvoreBinariaBusca {
     private Arquivo procuraArquivoRec(Arquivo raiz, String chave){
         Arquivo atual = raiz;
         
-        if(atual == null || atual.getChave().equals(chave)){
+        if(atual == null || atual.getChave().equals(chave)){ //Achou ou não existe
             return atual;
         }
         
@@ -33,14 +33,14 @@ public class ArvoreBinariaBusca {
         return procuraArquivoRec(atual.getDireito(), chave);
     }
     
-    public void addDiretorio(String chave){
+    public void addDiretorio(String chave){ //Serve mais para chamar o metodo recursivo
         this.raiz = addDiretorioRec(this.raiz, chave);
     }
     
     private Arquivo addDiretorioRec(Arquivo raiz, String chave){
         Arquivo atual = raiz;
         
-        if(atual == null){
+        if(atual == null){ //Não existe, então cria um novo Diretório
             atual = new Diretorio(chave);
             return (Diretorio) atual;
         }
@@ -53,14 +53,14 @@ public class ArvoreBinariaBusca {
         return atual;
     }
     
-    public void addArquivo(String chave){
+    public void addArquivo(String chave){ //Serve mais para chamar o metodo recursivo
         this.raiz = addArquivoRec(this.raiz, chave);
     }
     
     private Arquivo addArquivoRec(Arquivo raiz, String chave){
         Arquivo atual = raiz;
         
-        if(atual == null){
+        if(atual == null){ //Não existe, então cria um novo Arquivo
             atual = new Arquivo(chave);
             return atual;
         }
@@ -73,7 +73,7 @@ public class ArvoreBinariaBusca {
         return atual;
     }
     
-    public Arquivo interpretaPath(String path){
+    public Arquivo interpretaPath(String path){ //Serve mais para chamar o metodo recursivo
         return interpretaPathRec(this, path);
     }
     
@@ -84,11 +84,11 @@ public class ArvoreBinariaBusca {
         if(path.contains("/")){
             index = path.indexOf("/");
             dirAtual = dirAtual.substring(0, index);
-            dir = atual.procuraArquivo(dirAtual);
-            if(dir instanceof Diretorio)
+            dir = atual.procuraArquivo(dirAtual); //Procura o arquivo dado pelo path
+            if(dir instanceof Diretorio) //Se ele for diretório mesmo, passa a próxima arvore e continua
                 return interpretaPathRec(((Diretorio) dir).getDir(), path.substring(index+1, path.length()));
-            return dir;
-        }else{
+            return dir; //Só entra aqui se achar um arquivo com o mesmo nome da chave dada
+        }else{ //Chegou no diretório desejado
             return atual.procuraArquivo(dirAtual);
         }
     }
@@ -96,9 +96,7 @@ public class ArvoreBinariaBusca {
     public static void printArvoreRecursivo(String caminho, ArvoreBinariaBusca arvore, String pasta){
         Arquivo raiz = arvore.getRaiz();
         ArrayList<Diretorio> dirsAvisitar = new ArrayList<>();
-        if(pasta.equals("")){
-            
-        }else{
+        if(!pasta.equals("")){
             caminho = caminho.concat("/" + pasta);
         }
         
@@ -108,14 +106,11 @@ public class ArvoreBinariaBusca {
         dirsAvisitar = auxPrintArvoreRec(raiz);
         
         //visantando diretorios(arvores) contidas nos nós 
-        
         if(dirsAvisitar.isEmpty()){
             System.out.println("");
-        } else {
+        } else {            
             for(Diretorio d:dirsAvisitar){
-               
                 printArvoreRecursivo(caminho, d.getDir(),d.getChave());
-
             }
         }
         
@@ -139,20 +134,15 @@ public class ArvoreBinariaBusca {
                 for(Diretorio d:direito){
                     dirsAvisitar.add(d);
                 }
-            }
-            
-            
+            }    
         }
-        return dirsAvisitar;
-        
-        
+        return dirsAvisitar;       
     }
 
     public void printArvore(String nomeDir) {
         System.out.println("./"+ nomeDir);
         Arquivo raiz = this.getRaiz();
-        auxPrintArvore(raiz);
-        
+        auxPrintArvore(raiz);    
     }
 
     private static void auxPrintArvore(Arquivo raiz) {
