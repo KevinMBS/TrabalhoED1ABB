@@ -156,10 +156,7 @@ public class ArvoreBinariaBusca {
     }
     
     public void procuraChave(String caminho, String chave){
-        if(this.raiz == null){
-            System.out.println("Nenhum Diretório ou arquivo com esta chave encontrado em: "+caminho);
-            
-        }else{
+        
             Arquivo atual = this.raiz;
             while(atual != null){
                 if(chave.compareTo(atual.getChave()) < 0){
@@ -170,15 +167,58 @@ public class ArvoreBinariaBusca {
                     atual = atual.getDireito();
                 }else{
                     //achou
+                    if(caminho.length() == 1 && caminho.equals(".") == false){
+                        caminho = "./"+caminho;
+                        
+                    }
                     System.out.println(""+caminho+"/"+atual.getChave());
+                    
                     atual = null;
                 }
             }
-        }
+        
         
     }
     
-    public void procuraChaveRec(String caminho){
+    public void procuraChaveRec(String caminho, String nomePasta, String chave){
+        Arquivo raiz = this.getRaiz();
+        ArrayList<Diretorio> dirsAvisitar = new ArrayList<>();
+        if(!nomePasta.equals("")){
+            caminho = caminho.concat("/" + nomePasta);
+        }
         
+        
+        //guardando em um array os nós desta arvore que são diretorios,portanto estes devem ser visitados
+        dirsAvisitar = auxProxuraArvoreRec(raiz);
+        this.procuraChave(caminho, chave);
+        
+        //visantando diretorios(arvores) contidas nos nós 
+                    
+        for(Diretorio d:dirsAvisitar){
+            d.getDir().procuraChaveRec(caminho,d.getChave(),chave);
+        }
+        
+    }
+
+    private ArrayList<Diretorio> auxProxuraArvoreRec(Arquivo atual) {
+        ArrayList<Diretorio> dirsAvisitar = new ArrayList<>();
+        if(atual != null){
+            ArrayList<Diretorio> esquerdo = auxPrintArvoreRec(atual.getEsquerdo());
+            ArrayList<Diretorio> direito = auxPrintArvoreRec(atual.getDireito());
+            if(esquerdo.isEmpty() == false){
+                for(Diretorio d:esquerdo){
+                    dirsAvisitar.add(d);
+                }
+            }
+            if(atual instanceof Diretorio){
+                dirsAvisitar.add((Diretorio)atual);
+            }
+            if(direito.isEmpty() == false){
+                for(Diretorio d:direito){
+                    dirsAvisitar.add(d);
+                }
+            }    
+        }
+        return dirsAvisitar;
     }
 }
