@@ -189,7 +189,7 @@ public class ArvoreBinariaBusca {
         
         
         //guardando em um array os nós desta arvore que são diretorios,portanto estes devem ser visitados
-        dirsAvisitar = auxProxuraArvoreRec(raiz);
+        dirsAvisitar = auxProcuraArvoreRec(raiz);
         this.procuraChave(caminho, chave);
         
         //visantando diretorios(arvores) contidas nos nós 
@@ -200,11 +200,11 @@ public class ArvoreBinariaBusca {
         
     }
 
-    private ArrayList<Diretorio> auxProxuraArvoreRec(Arquivo atual) {
+    private ArrayList<Diretorio> auxProcuraArvoreRec(Arquivo atual) {
         ArrayList<Diretorio> dirsAvisitar = new ArrayList<>();
         if(atual != null){
-            ArrayList<Diretorio> esquerdo = auxPrintArvoreRec(atual.getEsquerdo());
-            ArrayList<Diretorio> direito = auxPrintArvoreRec(atual.getDireito());
+            ArrayList<Diretorio> esquerdo = auxProcuraArvoreRec(atual.getEsquerdo());
+            ArrayList<Diretorio> direito = auxProcuraArvoreRec(atual.getDireito());
             if(esquerdo.isEmpty() == false){
                 for(Diretorio d:esquerdo){
                     dirsAvisitar.add(d);
