@@ -165,5 +165,30 @@ public class ArvoreBinariaBusca {
         }
     }
     
+    public void procuraChave(String caminho, String chave){
+        if(this.raiz == null){
+            System.out.println("Nenhum Diretório ou arquivo com esta chave encontrado em: "+caminho);
+            
+        }else{
+            Arquivo atual = this.raiz;
+            while(atual != null){
+                if(chave.compareTo(atual.getChave()) < 0){
+                    //esquerda
+                    atual = atual.getEsquerdo();
+                }else if(chave.compareTo(atual.getChave()) > 0){
+                    //direita
+                    atual = atual.getDireito();
+                }else{
+                    //achou
+                    System.out.println(""+caminho+"/"+atual.getChave());
+                    atual = null;
+                }
+            }
+        }
+        
+    }
     
+    public void procuraChaveRec(String caminho){
+        
+    }
 }
