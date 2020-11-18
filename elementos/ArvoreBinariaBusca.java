@@ -106,13 +106,13 @@ public class ArvoreBinariaBusca {
         dirsAvisitar = auxPrintArvoreRec(raiz);
         
         //visantando diretorios(arvores) contidas nos nós 
-        if(dirsAvisitar.isEmpty()){
-            System.out.println("");
-        } else {            
-            for(Diretorio d:dirsAvisitar){
-                printArvoreRecursivo(caminho, d.getDir(),d.getChave());
-            }
+       
+        System.out.println("");
+                   
+        for(Diretorio d:dirsAvisitar){
+            printArvoreRecursivo(caminho, d.getDir(),d.getChave());
         }
+        
         
     }
     
