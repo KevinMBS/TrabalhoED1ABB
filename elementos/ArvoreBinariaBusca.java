@@ -140,7 +140,7 @@ public class ArvoreBinariaBusca {
     }
 
     public void printArvore(String nomeDir) {
-        System.out.println("./"+ nomeDir);
+        //System.out.println("./"+ nomeDir);
         Arquivo raiz = this.getRaiz();
         auxPrintArvore(raiz);    
     }
