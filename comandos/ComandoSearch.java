@@ -21,11 +21,11 @@ public class ComandoSearch implements Funcao{
                 //não recursivo
                 
                 Arquivo dir = arvore.interpretaPath(resComando[1]);
-                ((Diretorio)dir).getDir().procuraChave(resComando[1], resComando[2]);
+                ((Diretorio)dir).getDir().procuraChave("./" + resComando[1], resComando[2]);
             }
         }else if(resComando.length == 4){
             Arquivo dir = arvore.interpretaPath(resComando[2]);
-            ((Diretorio)dir).getDir().procuraChaveRec(resComando[2],"", resComando[3]);
+            ((Diretorio)dir).getDir().procuraChaveRec("./" + resComando[2],"", resComando[3]);
         }else{
             throw new ComandoInvalidoException(resComando[0]);
         }
